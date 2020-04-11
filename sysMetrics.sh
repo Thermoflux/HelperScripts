@@ -1,4 +1,8 @@
 #! /bin/bash
+
+## Used contents from blog post at http://www.systeen.com/2016/05/07/bash-script-monitor-cpu-memory-disk-usage-linux/ 
+## to build the following function
+
 function dumpSysMetrics($LogFilePath){
 MEMORY=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
 DISK=$(df -h | awk '$NF=="/"{printf "%s\t\t", $5}')
