@@ -3,12 +3,12 @@
 ## Sourced from https://stackoverflow.com/a/24728149 All credit goes to the original author.
 
 ## This function checks to see if a cron job with same function already exists 
-function cronjob_exists($command){
+function cronjob_exists(){
     $cronjob_exists=false;
     exec('crontab -l', $crontab);
     if(isset($crontab)&&is_array($crontab)){
         $crontab = array_flip($crontab);
-        if(isset($crontab[$command])){
+        if(isset($crontab[$1])){
             $cronjob_exists=true;
         }
     }
@@ -16,10 +16,10 @@ function cronjob_exists($command){
 }
 
 ## This function appends a unique cron job to the cron tab
-function append_cronjob($command){
-    if(is_string($command)&&!empty($command)&&cronjob_exists($command)===FALSE){
+function append_cronjob(){
+    if(is_string($1)&&!empty($1)&&cronjob_exists($1)===FALSE){
         //add job to crontab
-        exec('echo -e "`crontab -l`\n'.$command.'" | crontab -', $output);
+        exec('echo -e "`crontab -l`\n'.$1.'" | crontab -', $output);
     }
     return $output;
 }
