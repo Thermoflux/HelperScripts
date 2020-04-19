@@ -12,8 +12,8 @@ if [ $# -eq 0 ]; then
     echo "$nowtime, Memory:$MEMORY Disk:$DISK CPU:$CPU"
     exit 1
 else
-	echo "$nowtime, Memory:$MEMORY Disk:$DISK CPU:$CPU" >> $1
-	exit 1
+    echo "$nowtime, Memory:$MEMORY Disk:$DISK CPU:$CPU" >> $1
+    exit 1
 fi
 }
 ## If you need to run this through cron, uncomment line 11.
